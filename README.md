@@ -14,10 +14,13 @@ The project was developed to practice real-world cloud data engineering concepts
 
 ---
 ```markdown
+
 # Architecture
 
 <p align="center">
-  <img src="Images/architecture-diagram-WeatherData-Ingestion.png" width="900">
+  <a href="images/architecture-diagram.png">
+    <img src="images/architecture-diagram.png" width="800">
+  </a>
 </p>
 
 ```
