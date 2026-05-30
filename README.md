@@ -13,10 +13,13 @@ The project was developed to practice real-world cloud data engineering concepts
 - Data lake ingestion patterns
 
 ---
-
+```markdown
 # Architecture
 
-![Architecture Diagram](Images/architectecture-diagram-WeatherData-Ingestion.png)
+<p align="center">
+  <img src="Images/architecture-diagram-WeatherData-Ingestion.png" width="900">
+</p>
+
 ```
 
 ---
