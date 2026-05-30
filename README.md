@@ -13,8 +13,6 @@ The project was developed to practice real-world cloud data engineering concepts
 - Data lake ingestion patterns
 
 ---
-```markdown
-
 # Architecture
 
 <p align="center">
@@ -22,8 +20,6 @@ The project was developed to practice real-world cloud data engineering concepts
     <img src="images/architecture-diagram.png" width="800">
   </a>
 </p>
-
-```
 
 ---
 
