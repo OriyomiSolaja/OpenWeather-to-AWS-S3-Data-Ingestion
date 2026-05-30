@@ -10,13 +10,13 @@ The project was developed to practice real-world cloud data engineering concepts
 - Secure secret management
 - Cloud-native deployment
 - Automated scheduling
-- Data lake ingestion patterns
+- Data lake ingestion pattern
 
 ---
 # Architecture
 
 <p align="center">
-  <a href="images/architecture-diagram-Weather-Ingestion">
+  <a href="images/architecture-diagram-Weather-Ingestion.png">
     <img src="images/architecture-diagram-Weather-Ingestion.png" width="800">
   </a>
 </p>
