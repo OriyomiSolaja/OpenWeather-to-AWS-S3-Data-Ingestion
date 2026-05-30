@@ -16,8 +16,8 @@ The project was developed to practice real-world cloud data engineering concepts
 # Architecture
 
 <p align="center">
-  <a href="images/architecture-diagram.png">
-    <img src="images/architecture-diagram.png" width="800">
+  <a href="images/architecture-diagram-Weather-Ingestion">
+    <img src="images/architecture-diagram-Weather-Ingestion.png" width="800">
   </a>
 </p>
 
