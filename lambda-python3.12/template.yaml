@@ -35,7 +35,7 @@ Resources:
             - Effect: Allow          # ✅ indented under Statement
               Action:
                 - secretsmanager:GetSecretValue
-              Resource: "arn:aws:secretsmanager:us-east-1:959740417634:secret:weather/api-yFstAQ"
+              Resource: "arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:weather/api-*"
       Events:
 # New automated EventBridge Scheduler trigger
         WeatherHourlySchedule:
