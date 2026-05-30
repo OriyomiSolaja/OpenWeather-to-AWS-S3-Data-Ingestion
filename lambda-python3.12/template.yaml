@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  lambda-python3.12
+
+  Sample SAM Template for lambda-python3.12
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 30
+
+Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: hello_world/
+      Handler: app.lambda_handler
+      Runtime: python3.12
+      MemorySize: 256 
+
+      Architectures:
+        - x86_64
+      
+      Environment:
+        Variables:
+          BUCKET_NAME: weather-data-lake234
+          CITY: London
+          SECRET_NAME: weather/api
+
+      Policies:
+        - S3WritePolicy:
+            BucketName: weather-data-lake234
+        - Statement:
+            - Effect: Allow          # ✅ indented under Statement
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource: "arn:aws:secretsmanager:us-east-1:959740417634:secret:weather/api-yFstAQ"
+      Events:
+# New automated EventBridge Scheduler trigger
+        WeatherHourlySchedule:
+          Type: ScheduleV2
+          Properties:
+            Name: weather-hourly-ingestion-schedule
+            Description: Extract London weather data and upload it to S3 every hour
+            ScheduleExpression: rate(1 hour)
+            State: ENABLED
+            FlexibleTimeWindow:
+              Mode: "OFF"
+            RetryPolicy:
+              MaximumRetryAttempts: 2
+              MaximumEventAgeInSeconds: 3600
+            Input: '{"trigger_source": "eventbridge_scheduler"}'      
+Outputs:
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  HelloWorldFunction:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt HelloWorldFunction.Arn
+  HelloWorldFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt HelloWorldFunctionRole.Arn
